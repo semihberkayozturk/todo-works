@@ -1,2 +1,1 @@
-# to-do-list-react
-ToDo List Using React
+# A To-Do List Built With React
