@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import Footer from "./Footer.jsx";
 import Header from "./Header.jsx";
-import ToDoSchema from "./ToDoSchema.jsx";
+import ToDoItem from "./ToDoItem.jsx";
 
 const App = () => {
   const [inputTodo, setInputTodo] = useState("");
+  //Show the previous ToDos via useState.
   const [toDos, setToDos] = useState([]);
 
   const handleChange = (event) => {
@@ -16,18 +17,33 @@ const App = () => {
     setToDos((prevValues) => {
       return [...prevValues, inputTodo]
     })
+    //Clear the input area after submitting.
     setInputTodo("");
 };
 
   return (
     <div>
     <Header />
-    <ToDoSchema 
-      value={inputTodo}
-      change={handleChange}
-      ul={toDos.map((toDoItem) => <li>{toDoItem}</li>)}
-      click={addValue}
-    />
+    <div className="container">
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input onChange={handleChange} type="text" value={inputTodo} />
+        <button onClick={addValue}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+          {toDos.map(todoItem => (
+            <ToDoItem 
+              text={todoItem}
+            />
+          ))}
+        </ul>
+      </div>
+    </div>
     <Footer />
     </div>
   )
