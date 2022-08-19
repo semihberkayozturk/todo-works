@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Footer from "./Footer.jsx";
 import Header from "./Header.jsx";
 import ToDoItem from "./ToDoItem.jsx";
+import InputArea from "./InputArea.jsx";
 
 const App = () => {
   const [inputTodo, setInputTodo] = useState("");
@@ -20,25 +21,36 @@ const App = () => {
     //Clear the input area after submitting.
     setInputTodo("");
 };
-
+//Delete an item with a click and update the todo list.
+  const deleteToDo = (id) => {
+    setToDos(prevValues => {
+      return prevValues.filter(
+        (item,index) => {
+          return index !== id
+        }
+      )
+    })
+  };
   return (
     <div>
     <Header />
     <div className="container">
       <div className="heading">
-        <h1>To-Do List</h1>
+        <h1>{new Date().toISOString().slice(0, 10)}</h1>
       </div>
-      <div className="form">
-        <input onChange={handleChange} type="text" value={inputTodo} />
-        <button onClick={addValue}>
-          <span>Add</span>
-        </button>
-      </div>
+      <InputArea 
+        onChange={handleChange}
+        onClick={addValue}
+        value={inputTodo}
+      />
       <div>
         <ul>
-          {toDos.map(todoItem => (
+          {toDos.map((todoItem,index) => (
             <ToDoItem 
+              key={index}
+              id={index}
               text={todoItem}
+              onPress={deleteToDo}
             />
           ))}
         </ul>

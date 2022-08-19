@@ -1,8 +1,13 @@
-import React from "react";
+import React from "react";
 
 function ToDoItem(props) {
     return (
-        <li>{props.text}</li>
+        <div onClick={() => {
+            props.onPress(props.id)
+        }}
+        >
+            <li>{props.text}</li>
+        </div>
     );
 }
 
