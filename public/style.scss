@@ -85,11 +85,11 @@ button {
     border: none;
     font-family: 'Rubik', sans-serif;
     text-decoration: none;
-    padding-bottom: 3px;
+    padding-bottom: 4px;
     border-radius: 5px;
     background-color: #EF5B0C;
     color: #1C658C;
-    margin-left: 3%;
+    margin-left: 4%;
     span {
         background: #f1f5f8;
         display: block;
@@ -97,6 +97,10 @@ button {
         border-radius: 5px;
         border: 2px solid #1C658C;
     }
+}
+
+#clear {
+    margin-left: 81.5%;
 }
 
 li {

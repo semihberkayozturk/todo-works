@@ -13,6 +13,9 @@ const App = () => {
     const newValue = event.target.value;
     setInputTodo(newValue)
   }
+  const handleClear = (event) => {
+    setToDos([])
+  }
 
   const addValue = () => {
     setToDos((prevValues) => {
@@ -39,6 +42,7 @@ const App = () => {
         <h1>{new Date().toISOString().slice(0, 10)}</h1>
       </div>
       <InputArea 
+        onClear={handleClear}
         onChange={handleChange}
         onClick={addValue}
         value={inputTodo}

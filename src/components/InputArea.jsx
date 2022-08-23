@@ -5,6 +5,9 @@ function InputArea(props) {
             <button onClick={props.onClick}>
                 <span>Add</span>
             </button>
+            <button id="clear" onClick={props.onClear}>
+                <span>Clear</span>
+            </button>
         </div>
     );
 }
